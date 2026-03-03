@@ -2,9 +2,13 @@ language: python
 python:
   - "3.11"
 
+services:
+  - docker
+
 install:
   - python -m pip install --upgrade pip
   - pip install -r requirements.txt
 
 script:
   - pytest -q
+  - docker build -t repo_integrador:test .
